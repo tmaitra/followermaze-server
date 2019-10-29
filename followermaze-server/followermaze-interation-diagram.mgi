@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram>
+    <CommunicationClass name="com.followermaze.server.Connector" x="811" y="169"/>
+    <CommunicationClass name="com.followermaze.user.PeerConnector"
+        x="583" y="174">
+        <Extension destinationClassName="com.followermaze.server.Connector"/>
+        <Association
+            destinationClassName="com.followermaze.user.UserClientsRegistry"
+            endpointName="registry" kind="Simple"/>
+        <Communication destinationClassName="com.followermaze.user.UserClientsRegistry"/>
+    </CommunicationClass>
+    <CommunicationClass name="com.followermaze.server.Peer" x="30" y="180"/>
+    <CommunicationClass name="com.followermaze.user.UserClientsRegistry"
+        x="131" y="63">
+        <Communication destinationClassName="com.followermaze.server.Peer"/>
+    </CommunicationClass>
+    <CommunicationClass name="com.followermaze.event.UnfollowEvent"
+        x="452" y="298">
+        <Extension destinationClassName="com.followermaze.event.CompleteEvent"/>
+        <Communication destinationClassName="com.followermaze.event.EventProcessor"/>
+    </CommunicationClass>
+    <CommunicationClass
+        name="com.followermaze.event.PrivateMessageEvent" x="585" y="300">
+        <Extension destinationClassName="com.followermaze.event.CompleteEvent"/>
+        <Communication destinationClassName="com.followermaze.event.EventProcessor"/>
+    </CommunicationClass>
+    <CommunicationClass name="com.followermaze.event.EventParser"
+        x="497" y="648"/>
+    <CommunicationClass name="com.followermaze.event.EventSorter" x="8" y="646">
+        <Association
+            destinationClassName="com.followermaze.event.EventProcessor"
+            endpointName="visitor" kind="Simple"/>
+        <Communication destinationClassName="com.followermaze.event.BaseEvent"/>
+    </CommunicationClass>
+    <CommunicationClass
+        name="com.followermaze.eventsource.EventSourceConnector" x="652" y="646">
+        <Extension destinationClassName="com.followermaze.server.Connector"/>
+        <Association
+            destinationClassName="com.followermaze.event.EventSorter"
+            endpointName="sorter" kind="Simple"/>
+    </CommunicationClass>
+    <CommunicationClass name="com.followermaze.event.CompleteEvent"
+        x="324" y="649">
+        <Extension destinationClassName="com.followermaze.event.BaseEvent"/>
+    </CommunicationClass>
+    <CommunicationClass name="com.followermaze.event.ClientGraph"
+        x="869" y="300"/>
+    <CommunicationClass name="com.followermaze.event.StatusUpdateEvent"
+        x="299" y="297">
+        <Extension destinationClassName="com.followermaze.event.BaseEvent"/>
+        <Communication destinationClassName="com.followermaze.event.EventProcessor"/>
+    </CommunicationClass>
+    <CommunicationClass name="com.followermaze.server.ServerSocket"
+        x="682" y="64">
+        <Communication destinationClassName="com.followermaze.server.Connector"/>
+    </CommunicationClass>
+    <CommunicationClass name="com.followermaze.event.BroadcastEvent"
+        x="153" y="299">
+        <Extension destinationClassName="com.followermaze.event.BaseEvent"/>
+        <Communication destinationClassName="com.followermaze.event.EventProcessor"/>
+    </CommunicationClass>
+    <CommunicationClass name="com.followermaze.Main" x="398" y="6">
+        <Communication destinationClassName="com.followermaze.user.UserClientsRegistry"/>
+        <Communication destinationClassName="com.followermaze.server.ServerSocket"/>
+    </CommunicationClass>
+    <CommunicationClass name="com.followermaze.event.EventProcessor"
+        x="247" y="176">
+        <Association
+            destinationClassName="com.followermaze.user.UserClientsRegistry"
+            endpointName="peerRegistry" kind="Simple"/>
+        <Association
+            destinationClassName="com.followermaze.event.ClientGraph"
+            endpointName="graph" kind="Simple"/>
+        <Communication destinationClassName="com.followermaze.user.UserClientsRegistry"/>
+        <Communication destinationClassName="com.followermaze.event.ClientGraph"/>
+    </CommunicationClass>
+    <CommunicationClass name="com.followermaze.event.FollowEvent" x="9" y="298">
+        <Extension destinationClassName="com.followermaze.event.CompleteEvent"/>
+        <Communication destinationClassName="com.followermaze.event.EventProcessor"/>
+    </CommunicationClass>
+    <CommunicationClass name="com.followermaze.event.BaseEvent" x="175" y="647"/>
+</ClassDiagram>

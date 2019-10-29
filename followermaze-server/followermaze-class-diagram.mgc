@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram>
+    <Class name="com.followermaze.server.Connector" x="909" y="354">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="com.followermaze.user.PeerConnector" x="800" y="474">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.followermaze.server.Connector"/>
+        <Association
+            destinationClassName="com.followermaze.user.UserClientsRegistry"
+            endpointName="registry" kind="Simple"/>
+        <Communication destinationClassName="com.followermaze.user.UserClientsRegistry"/>
+    </Class>
+    <Class name="com.followermaze.server.Peer" x="318" y="567">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="com.followermaze.user.UserClientsRegistry" x="487" y="487">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="com.followermaze.server.Peer"/>
+    </Class>
+    <Class name="com.followermaze.event.UnfollowEvent" x="496" y="271">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.followermaze.event.CompleteEvent"/>
+        <Communication destinationClassName="com.followermaze.event.EventProcessor"/>
+    </Class>
+    <Class name="com.followermaze.event.PrivateMessageEvent" x="279" y="276">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.followermaze.event.CompleteEvent"/>
+        <Communication destinationClassName="com.followermaze.event.EventProcessor"/>
+    </Class>
+    <Class name="com.followermaze.event.EventParser" x="32" y="588">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="com.followermaze.event.EventSorter" x="380" y="350">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="com.followermaze.event.EventProcessor"
+            endpointName="visitor" kind="Simple"/>
+        <Communication destinationClassName="com.followermaze.event.BaseEvent"/>
+    </Class>
+    <Class name="com.followermaze.eventsource.EventSourceConnector"
+        x="681" y="350">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.followermaze.server.Connector"/>
+        <Association
+            destinationClassName="com.followermaze.event.EventSorter"
+            endpointName="sorter" kind="Simple"/>
+    </Class>
+    <Class name="com.followermaze.event.CompleteEvent" x="439" y="188">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.followermaze.event.BaseEvent"/>
+    </Class>
+    <Class name="com.followermaze.event.ClientGraph" x="43" y="473">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="com.followermaze.event.StatusUpdateEvent" x="9" y="191">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.followermaze.event.BaseEvent"/>
+        <Communication destinationClassName="com.followermaze.event.EventProcessor"/>
+    </Class>
+    <Class name="com.followermaze.server.ServerSocket" x="384" y="37">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="com.followermaze.server.Connector"/>
+    </Class>
+    <Class name="com.followermaze.event.BroadcastEvent" x="204" y="194">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.followermaze.event.BaseEvent"/>
+        <Communication destinationClassName="com.followermaze.event.EventProcessor"/>
+    </Class>
+    <Class name="com.followermaze.Main" x="295" y="36">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="com.followermaze.user.UserClientsRegistry"/>
+        <Communication destinationClassName="com.followermaze.server.ServerSocket"/>
+    </Class>
+    <Class name="com.followermaze.event.EventProcessor" x="29" y="338">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="com.followermaze.user.UserClientsRegistry"
+            endpointName="peerRegistry" kind="Simple"/>
+        <Association
+            destinationClassName="com.followermaze.event.ClientGraph"
+            endpointName="graph" kind="Simple"/>
+        <Communication destinationClassName="com.followermaze.user.UserClientsRegistry"/>
+        <Communication destinationClassName="com.followermaze.event.ClientGraph"/>
+    </Class>
+    <Class name="com.followermaze.event.FollowEvent" x="730" y="275">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.followermaze.event.CompleteEvent"/>
+        <Communication destinationClassName="com.followermaze.event.EventProcessor"/>
+    </Class>
+    <Class name="com.followermaze.event.BaseEvent" x="75" y="51">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+</ClassDiagram>
